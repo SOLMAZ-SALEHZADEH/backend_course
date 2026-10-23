@@ -877,3 +877,15 @@ ul {
         padding-block: 30px 65px;
     }
 }
+
+/* Temporary profile avatar illustration; replace with a real photo when available. */
+.profile-avatar-placeholder {
+    overflow: hidden;
+    padding: 0;
+}
+
+.profile-avatar-placeholder svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
