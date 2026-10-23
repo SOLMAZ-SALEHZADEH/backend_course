@@ -651,3 +651,136 @@ ul {
         padding-block: 60px;
     }
 }
+
+/* =========================
+   9. Projects page
+========================= */
+
+.projects-section {
+    padding-block: 10px 90px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: 0 12px 40px rgba(36, 39, 34, 0.04);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #d5dfd2;
+    box-shadow: var(--shadow-card);
+}
+
+.project-number {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    margin-bottom: 26px;
+    border-radius: 14px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-weight: 750;
+}
+
+.project-category {
+    margin-bottom: 12px;
+    color: var(--color-primary);
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 1px;
+}
+
+.project-card h2 {
+    margin-bottom: 14px;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+}
+
+.project-description {
+    margin-bottom: 22px;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.85;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    margin-bottom: 26px;
+}
+
+.project-tags span {
+    padding: 6px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: #fafaf7;
+    color: #62675f;
+    font-size: 0.72rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.project-link:hover {
+    color: var(--color-primary-dark);
+}
+
+.projects-note {
+    margin-top: 34px;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.projects-github {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+@media (max-width: 950px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 620px) {
+    .projects-section {
+        padding-bottom: 60px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 24px;
+    }
+}
