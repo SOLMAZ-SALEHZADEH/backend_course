@@ -6,6 +6,7 @@ from .models import *
 from django.shortcuts import render
 from decimal import Decimal, InvalidOperation
 from django.contrib import messages
+from django.db import transaction
 
 @login_required
 def add_to_cart_view(request, product_id):
@@ -71,6 +72,7 @@ def remove_from_cart(request,product_id):
 
 
 @login_required
+@transaction.atomic
 def checkout_view(request):
     customer = get_object_or_404(CustomerProfile, user=request.user)
     cart = Cart.objects.filter(customer=customer).first()
