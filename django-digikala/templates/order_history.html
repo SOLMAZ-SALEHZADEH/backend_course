@@ -1,0 +1,74 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Order History | DijiKala{% endblock %}
+
+{% block content %}
+<div class="order-history-page">
+
+    <div class="order-history-heading">
+        <h2>📦 My Orders</h2>
+        <p>View your previous purchases</p>
+    </div>
+
+    {% if orders %}
+        {% for order in orders %}
+            <div class="order-card">
+
+                <div class="order-card-header">
+                    <div>
+                        <h3>Order #{{ order.id }}</h3>
+                        <span>Placed on {{ order.date|date:"M d, Y - H:i" }}</span>
+                    </div>
+                    <div class="order-total">
+                        <small>Total Amount</small>
+                        <strong>${{ order.total_amount }}</strong>
+                    </div>
+                </div>
+
+                <div class="order-card-body">
+                    {% for item in order.orderitem_set.all %}
+                        <div class="order-product-row">
+
+                            <div class="order-product-image">
+                                {% if item.product.image %}
+                                    <img width='150px' src="{{ item.product.image.url }}"
+                                         alt="{{ item.product.name }}">
+                                {% else %}
+                                    <div class="no-product-image">📦</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="order-product-details">
+                                <h4>{{ item.product.name }}</h4>
+                                <p>Quantity: {{ item.quantity }}</p>
+                            </div>
+
+                            <div class="order-product-price">
+                                ${{ item.price }}
+                            </div>
+
+                        </div>
+                    {% empty %}
+                        <p>No products found in this order.</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty-orders">
+            <span>🛍️</span>
+            <h3>No orders yet</h3>
+            <p>Your completed orders will appear here.</p>
+            <a href="{% url 'home' %}" class="btn">Start Shopping</a>
+        </div>
+    {% endif %}
+
+    <a href="{% url 'customer' %}" class="back-link">
+        ← Back to Customer Panel
+    </a>
+
+</div>
+{% endblock %}
